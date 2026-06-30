@@ -1,109 +1,419 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Security Engineer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #0e0e10;
-            color: #fff;
-            text-align: center;
-        }
-        header {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #1e1e2f, #3e3e61);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-        p.subtitle {
-            font-size: 1.2em;
-            color: #aaa;
-        }
-        section {
-            margin: 50px auto;
-            padding: 40px;
-            width: 80%;
-            max-width: 1000px;
-            background: #1e1e2f;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
-        }
-        section:hover {
-            transform: scale(1.03);
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #333;
-        }
-        ul li:last-child {
-            border-bottom: none;
-        }
-        footer {
-            padding: 20px;
-            background: #1e1e2f;
-            box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.7);
-        }
-        a {
-            color: #61dafb;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        a:hover {
-            color: #00ffaa;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deepak Gambhir — Cloud Security Engineer</title>
+<meta name="description" content="Deepak Gambhir, Cloud Security Engineer specializing in CSPM, application security, secrets management, and IAM governance across AWS, Azure, and GCP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0E11;
+    --panel: #11161B;
+    --panel-line: #1E262E;
+    --accent: #7FE7C4;
+    --accent-dim: #355E52;
+    --text: #E7ECEE;
+    --muted: #7C8894;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(127,231,196,0.07), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  a{color:inherit;}
+  ::selection{background:var(--accent); color:#0B0E11;}
+
+  .skip{position:absolute; left:-999px; top:0; background:var(--accent); color:#0B0E11; padding:8px 14px; font-family:var(--mono); z-index:100;}
+  .skip:focus{left:12px; top:12px;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  .wrap{max-width:1040px; margin:0 auto; padding:0 24px;}
+
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,14,17,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--panel-line);
+  }
+  .navbar{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
+  .brand{font-family:var(--mono); font-weight:600; font-size:15px; letter-spacing:0.02em; display:flex; align-items:center; gap:8px;}
+  .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent); flex:none;}
+  nav.links{display:flex; gap:28px; font-family:var(--mono); font-size:13px;}
+  nav.links a{text-decoration:none; color:var(--muted); transition:color .15s ease;}
+  nav.links a:hover{color:var(--accent);}
+  .navbar .cta{
+    font-family:var(--mono); font-size:13px; text-decoration:none;
+    border:1px solid var(--accent-dim); color:var(--accent);
+    padding:7px 14px; border-radius:3px; transition:all .15s ease; white-space:nowrap;
+  }
+  .navbar .cta:hover{background:var(--accent); color:#0B0E11;}
+
+  .hero{padding:88px 0 64px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:0.12em; text-transform:uppercase;
+    display:flex; align-items:center; gap:10px; margin-bottom:18px;
+  }
+  .eyebrow::before{content:""; width:18px; height:1px; background:var(--accent-dim);}
+  h1{
+    font-family:var(--mono); font-weight:700; font-size:clamp(32px,5vw,52px);
+    line-height:1.12; margin:0 0 18px; letter-spacing:-0.01em;
+  }
+  h1 .accent{color:var(--accent);}
+  .hero-sub{font-size:18px; color:#B8C2C9; max-width:620px; margin:0 0 32px;}
+  .hero-meta{display:flex; flex-wrap:wrap; gap:18px; font-family:var(--mono); font-size:13px; color:var(--muted); margin-bottom:36px;}
+  .hero-meta span{display:flex; align-items:center; gap:7px;}
+  .hero-meta svg{width:14px; height:14px; flex:none;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:14px; text-decoration:none; padding:11px 20px; border-radius:3px;
+    display:inline-flex; align-items:center; gap:8px; transition:all .15s ease; border:1px solid transparent;
+  }
+  .btn-primary{background:var(--accent); color:#0B0E11; font-weight:600;}
+  .btn-primary:hover{background:#9FF0D5;}
+  .btn-ghost{border-color:var(--panel-line); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent-dim); color:var(--accent);}
+
+  .scan-panel{
+    margin-top:48px; background:var(--panel); border:1px solid var(--panel-line); border-radius:6px;
+    overflow:hidden;
+  }
+  .scan-head{
+    display:flex; align-items:center; justify-content:space-between; padding:12px 18px;
+    border-bottom:1px solid var(--panel-line); font-family:var(--mono); font-size:12px; color:var(--muted);
+  }
+  .scan-head .lights{display:flex; gap:6px;}
+  .scan-head .lights i{width:9px; height:9px; border-radius:50%; background:#2A333B; display:block;}
+  .scan-body{padding:20px; font-family:var(--mono); font-size:13px;}
+  .scan-line{display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px dashed var(--panel-line); flex-wrap:wrap;}
+  .scan-line:last-child{border-bottom:none;}
+  .scan-tag{color:var(--muted); min-width:170px;}
+  .scan-status{color:var(--accent); font-weight:600;}
+  .scan-bar{flex:1; min-width:120px; height:6px; background:#1A2228; border-radius:3px; overflow:hidden;}
+  .scan-bar i{display:block; height:100%; background:linear-gradient(90deg,var(--accent-dim),var(--accent)); width:0%; border-radius:3px; transition:width 1.1s cubic-bezier(.4,0,.2,1);}
+  .scan-line.in-view .scan-bar i{width:var(--w);}
+  .scan-footer{
+    padding:12px 18px; border-top:1px solid var(--panel-line); font-family:var(--mono); font-size:12px;
+    color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;
+  }
+  .scan-footer b{color:var(--accent);}
+
+  section{padding:64px 0; border-bottom:1px solid var(--panel-line);}
+  .section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:36px;}
+  .section-head .idx{font-family:var(--mono); color:var(--accent-dim); font-size:14px;}
+  .section-head h2{font-family:var(--mono); font-size:22px; margin:0; font-weight:600; letter-spacing:-0.01em;}
+  .section-head .rule{flex:1; height:1px; background:var(--panel-line);}
+
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:48px;}
+  .about-grid p{color:#C3CCD2; margin:0 0 16px;}
+  .stat-list{display:flex; flex-direction:column; gap:0; border:1px solid var(--panel-line); border-radius:6px; overflow:hidden;}
+  .stat-row{display:flex; justify-content:space-between; padding:14px 18px; border-bottom:1px solid var(--panel-line); font-family:var(--mono); font-size:13px;}
+  .stat-row:last-child{border-bottom:none;}
+  .stat-row span:first-child{color:var(--muted);}
+  .stat-row span:last-child{color:var(--text); font-weight:600;}
+
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--panel-line); border:1px solid var(--panel-line); border-radius:6px; overflow:hidden;}
+  .skill-card{background:var(--panel); padding:20px;}
+  .skill-card h3{font-family:var(--mono); font-size:13px; color:var(--accent); text-transform:uppercase; letter-spacing:0.06em; margin:0 0 12px;}
+  .skill-card ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px;}
+  .skill-card li{font-size:14px; color:#C3CCD2; padding-left:14px; position:relative;}
+  .skill-card li::before{content:"›"; position:absolute; left:0; color:var(--accent-dim);}
+
+  .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  .proj-card{background:var(--panel); border:1px solid var(--panel-line); border-radius:6px; padding:22px; transition:border-color .15s ease, transform .15s ease;}
+  .proj-card:hover{border-color:var(--accent-dim); transform:translateY(-2px);}
+  .proj-card .proj-tag{font-family:var(--mono); font-size:11px; color:var(--accent); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; display:block;}
+  .proj-card h3{font-family:var(--mono); font-size:15px; margin:0 0 10px; color:var(--text);}
+  .proj-card p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.6;}
+
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .list-plain{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .list-plain li{display:flex; justify-content:space-between; gap:12px; padding-bottom:16px; border-bottom:1px solid var(--panel-line); font-size:14.5px;}
+  .list-plain li:last-child{border-bottom:none; padding-bottom:0;}
+  .list-plain .yr{font-family:var(--mono); color:var(--muted); font-size:13px; white-space:nowrap;}
+
+  .contact-box{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:8px; padding:44px;
+    text-align:center;
+  }
+  .contact-box .eyebrow{justify-content:center;}
+  .contact-box .eyebrow::before{display:none;}
+  .contact-box h2{font-family:var(--mono); font-size:clamp(22px,3vw,30px); margin:0 0 14px;}
+  .contact-box p{color:var(--muted); max-width:480px; margin:0 auto 28px;}
+  .contact-actions{display:flex; justify-content:center; gap:14px; flex-wrap:wrap;}
+
+  footer{padding:28px 0; text-align:center; font-family:var(--mono); font-size:12px; color:var(--muted);}
+
+  @media (max-width:760px){
+    nav.links{display:none;}
+    .about-grid, .two-col{grid-template-columns:1fr; gap:28px;}
+    .skills-grid{grid-template-columns:1fr;}
+    .proj-grid{grid-template-columns:1fr;}
+    .scan-tag{min-width:130px;}
+  }
+</style>
 </head>
 <body>
-    <header>
-        <h1>John Doe</h1>
-        <p class="subtitle">Cloud Security Engineer | AWS | WAF | IAM</p>
-    </header>
+<a href="#main" class="skip">Skip to content</a>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am a passionate Cloud Security Engineer with experience in AWS security services, Web Application Firewalls, and IAM configurations.</p>
-    </section>
+<header class="nav">
+  <div class="navbar wrap">
+    <div class="brand"><span class="dot" aria-hidden="true"></span>DG // SEC-OPS</div>
+    <nav class="links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Focus areas</a>
+      <a href="#credentials">Credentials</a>
+    </nav>
+    <a class="cta" href="#contact">Contact</a>
+  </div>
+</header>
 
-    <section id="skills">
-        <h2>Skills</h2>
+<main id="main">
+
+  <section class="hero wrap" style="border-bottom:1px solid var(--panel-line);">
+    <div class="eyebrow">Status: Open to opportunities</div>
+    <h1>Deepak Gambhir builds <span class="accent">cloud security</span> that engineers don't route around.</h1>
+    <p class="hero-sub">Cloud Security Engineer with 5+ years hardening AWS, Azure, and GCP — covering posture management, application security, secrets, and identity governance — without slowing down delivery.</p>
+
+    <div class="hero-meta">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-8-7.4-8-12a8 8 0 0 1 16 0c0 4.6-8 12-8 12z"/><circle cx="12" cy="9" r="2.5"/></svg> New Delhi, India</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h4l2 5-2.5 1.5a11 11 0 0 0 5 5L13 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 7a2 2 0 0 1 2-2z"/></svg> +91-8076734201</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg> deepakgambhir.00@gmail.com</span>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-ghost" href="#projects">View focus areas</a>
+    </div>
+
+    <div class="scan-panel" id="scanPanel">
+      <div class="scan-head">
+        <span>posture-scan.sh — domains: cloud, appsec, identity, secrets</span>
+        <div class="lights"><i></i><i></i><i></i></div>
+      </div>
+      <div class="scan-body">
+        <div class="scan-line" style="--w:96%"><span class="scan-tag">Cloud (AWS/Azure/GCP)</span><span class="scan-bar"><i></i></span><span class="scan-status">covered</span></div>
+        <div class="scan-line" style="--w:92%"><span class="scan-tag">CSPM — Wiz / Orca</span><span class="scan-bar"><i></i></span><span class="scan-status">covered</span></div>
+        <div class="scan-line" style="--w:90%"><span class="scan-tag">AppSec — SAST/SCA, OWASP</span><span class="scan-bar"><i></i></span><span class="scan-status">covered</span></div>
+        <div class="scan-line" style="--w:94%"><span class="scan-tag">Secrets — HashiCorp Vault</span><span class="scan-bar"><i></i></span><span class="scan-status">covered</span></div>
+        <div class="scan-line" style="--w:88%"><span class="scan-tag">IAM — Okta, RBAC, Veza</span><span class="scan-bar"><i></i></span><span class="scan-status">covered</span></div>
+      </div>
+      <div class="scan-footer">
+        <span>scan complete · 5 domains assessed</span>
+        <span><b>0 open criticals</b> — remediated by design</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="wrap">
+    <div class="section-head"><span class="idx">01</span><h2>About</h2><span class="rule"></span></div>
+    <div class="about-grid">
+      <div>
+        <p>Deepak specializes in cloud security posture management, application security, and secrets governance — the layer between fast-moving engineering teams and the controls that keep them safe. His work spans onboarding multi-cloud accounts into CSPM platforms, triaging SAST/SCA findings with the developers who fix them, and running identity programs that hold up under audit.</p>
+        <p>He's drawn to problems where security has to earn its place in the pipeline rather than gate it — integrating secrets managers into CI/CD instead of leaving credentials hardcoded, mapping identity providers into vaults and posture tools instead of running parallel silos, automating the alerting nobody wants to build by hand.</p>
+      </div>
+      <div class="stat-list">
+        <div class="stat-row"><span>Experience</span><span>5+ years</span></div>
+        <div class="stat-row"><span>Cloud platforms</span><span>AWS · Azure · GCP</span></div>
+        <div class="stat-row"><span>Domain focus</span><span>CSPM · AppSec · IAM</span></div>
+        <div class="stat-row"><span>Compliance</span><span>PCI-DSS</span></div>
+        <div class="stat-row"><span>Location</span><span>New Delhi, India</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="wrap">
+    <div class="section-head"><span class="idx">02</span><h2>Technical skills</h2><span class="rule"></span></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Cloud & CSPM</h3>
         <ul>
-            <li>AWS Security Services</li>
-            <li>Web Application Firewall (WAF)</li>
-            <li>IAM & Access Management</li>
-            <li>SIEM & Threat Detection</li>
-            <li>Infrastructure as Code (Terraform, CloudFormation)</li>
+          <li>AWS, Azure, Google Cloud Platform</li>
+          <li>Wiz (Cloud, Code, Defend)</li>
+          <li>Orca Security, Prisma</li>
+          <li>Microsoft Defender for Cloud</li>
         </ul>
-    </section>
+      </div>
+      <div class="skill-card">
+        <h3>Application Security</h3>
+        <ul>
+          <li>SAST & SCA via Wiz Code</li>
+          <li>Secure code review</li>
+          <li>OWASP Top 10</li>
+          <li>Container & IaC scanning</li>
+          <li>Secure CI/CD pipeline design</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Identity & Access</h3>
+        <ul>
+          <li>Okta, AWS IAM, RBAC, SSO</li>
+          <li>Identity governance, Veza</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Secrets Management</h3>
+        <ul>
+          <li>HashiCorp Vault</li>
+          <li>Azure Key Vault</li>
+          <li>AWS Secrets Manager</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>IaC & DevSecOps</h3>
+        <ul>
+          <li>Terraform</li>
+          <li>Git, GitHub Actions</li>
+          <li>Agile delivery</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Monitoring & SIEM</h3>
+        <ul>
+          <li>Chronicle SIEM, Splunk</li>
+          <li>Datadog, Azure Monitor</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Security Tools</h3>
+        <ul>
+          <li>Cloudflare WAF</li>
+          <li>CrowdStrike</li>
+          <li>Carbon Black Cloud</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Automation</h3>
+        <ul>
+          <li>Python automation</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Security Domains</h3>
+        <ul>
+          <li>Vulnerability management</li>
+          <li>Incident management</li>
+          <li>PCI-DSS compliance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <p>✔️ Secured multi-tier web applications using AWS WAF and Shield.</p>
-        <p>✔️ Implemented automated IAM role reviews with AWS Config.</p>
-        <p>✔️ Created infrastructure security baselines with Terraform.</p>
-    </section>
+  <section id="projects" class="wrap">
+    <div class="section-head"><span class="idx">03</span><h2>Focus areas</h2><span class="rule"></span></div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <span class="proj-tag">CSPM</span>
+        <h3>Multi-cloud onboarding</h3>
+        <p>Bringing AWS, Azure, and GCP accounts plus application repositories into unified posture management, enabling CSPM and SAST/SCA coverage alongside compliance metrics for vulnerabilities and secrets.</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">Identity</span>
+        <h3>Identity-to-secrets integration</h3>
+        <p>Connecting identity providers with secrets managers for centralized authentication, RBAC, and governed access to sensitive credentials.</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">AppSec</span>
+        <h3>Vulnerability remediation programs</h3>
+        <p>Partnering with engineering teams to triage and close code vulnerabilities, vulnerable dependencies, and IaC misconfigurations across multi-cloud environments.</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">Edge security</span>
+        <h3>Web application firewall deployment</h3>
+        <p>Rolling out WAF and rate-limiting policies across public-facing applications to reduce application-layer attack surface.</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">Observability</span>
+        <h3>Centralized logging & monitoring</h3>
+        <p>Standing up SIEM and monitoring pipelines for unified visibility across cloud and application environments.</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">Automation</span>
+        <h3>Secrets operations tooling</h3>
+        <p>Building automation for secrets retrieval and health alerting, removing manual steps from day-to-day vault operations.</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">Governance</span>
+        <h3>Access correlation & IAM evaluation</h3>
+        <p>Evaluating identity governance tools and access correlation solutions to improve visibility into cloud-native permissions.</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">Secrets</span>
+        <h3>Secrets migration & centralization</h3>
+        <p>Migrating cloud-native secrets and certificates into a centralized vault for consistent governance and compliance.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: johndoe@example.com</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/johndoe">linkedin.com/in/johndoe</a></p>
-        <p>GitHub: <a href="https://github.com/johndoe">github.com/johndoe</a></p>
-    </section>
+  <section id="credentials" class="wrap" style="border-bottom:none;">
+    <div class="section-head"><span class="idx">04</span><h2>Credentials</h2><span class="rule"></span></div>
+    <div class="two-col">
+      <div>
+        <h3 style="font-family:var(--mono); font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:18px;">Certifications</h3>
+        <ul class="list-plain">
+          <li><span>Microsoft Certified: Azure Fundamentals</span></li>
+          <li><span>MTA: Introduction to Programming Using Python</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-family:var(--mono); font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:18px;">Education</h3>
+        <ul class="list-plain">
+          <li><span>MCA — Guru Gobind Singh Indraprastha University (GGSIU)</span><span class="yr">2021</span></li>
+          <li><span>BCA — Guru Gobind Singh Indraprastha University (GGSIU)</span><span class="yr">2018</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>© 2025 John Doe | Cloud Security Engineer</p>
-    </footer>
+  <section id="contact" class="wrap" style="border-bottom:none;">
+    <div class="contact-box">
+      <div class="eyebrow">Let's talk</div>
+      <h2>Securing the cloud is a team sport.</h2>
+      <p>Open to roles in cloud security, application security, and DevSecOps. Reach out directly — no recruiters-in-the-middle required.</p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:deepakgambhir.00@gmail.com">deepakgambhir.00@gmail.com</a>
+        <a class="btn btn-ghost" href="tel:+918076734201">+91-8076734201</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> Deepak Gambhir. New Delhi, India.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const lines = document.querySelectorAll('.scan-line');
+  const panel = document.getElementById('scanPanel');
+  function trigger(){
+    lines.forEach((l, i) => setTimeout(() => l.classList.add('in-view'), i * 140));
+  }
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting){ trigger(); io.disconnect(); } });
+    }, { threshold: 0.3 });
+    io.observe(panel);
+  } else {
+    trigger();
+  }
+</script>
+
 </body>
 </html>
